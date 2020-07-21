@@ -1,0 +1,113 @@
+.loader-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+
+    .loader-wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .shadow {
+            position: absolute;
+            width:20px;
+            height:4px;
+            top: 66px;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,.5);
+            z-index: -1;
+            filter: blur(1px);
+            transform-origin: 50%;
+            animation: 0.5s infinite alternate wobble ease;
+
+            &:nth-child(5) {
+                right: 130px;
+            }
+
+            &:nth-child(6) {
+                right: 90px;
+                animation-delay: 0.2s;
+            }
+
+            &:nth-child(7) {
+                right: 50px;
+                animation-delay: 0.3s;
+            }
+
+            &:nth-child(8) {
+                right: 10px;
+                animation-delay: 0.5s;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0;
+            border-radius: 10px;
+            border: 1px solid black;
+            transform-origin: 50%;
+            animation: 0.5s infinite alternate bounce ease;
+
+            &:nth-child(1) {
+                right: 130px;
+            }
+
+            &:nth-child(2) {
+                right: 90px;
+                animation-delay: 0.2s;
+            }
+
+            &:nth-child(3) {
+                right: 50px;
+                animation-delay: 0.3s;
+            }
+
+            &:nth-child(4) {
+                right: 10px;
+                animation-delay: 0.4s;
+            }
+        }
+    }
+}
+
+@keyframes bounce {
+    0%{
+        top:60px;
+        height:5px;
+        background: #151339;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+    40%{
+        height:20px;
+        background: #221d39;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+    100%{
+        background: #1d424a;
+        top:0%;
+    }
+}
+
+@keyframes wobble {
+    0%{
+        transform: scaleX(1.5);
+    }
+    40%{
+        transform: scaleX(1);
+        opacity: .7;
+    }
+    100%{
+        transform: scaleX(.2);
+        opacity: .4;
+    }
+}
