@@ -18,7 +18,7 @@ const SearchBar = () => {
 
     useEffect(() => {
         if(value !== '') {
-            const timeOut = setTimeout(search, 500);
+            const timeOut = setTimeout(search, 1500);
 
             return () => {
                 clearTimeout(timeOut);

@@ -1,0 +1,45 @@
+.side-panel-container {
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .profile-stats {
+        width: 100%;
+        height: 40%;
+
+        .profile-stats-heading {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            
+            h2 {
+                margin-left: 20px;
+            }
+        }
+
+        .profile-stats-chart {
+            width: 100%;
+            height: 90%;
+        }
+    }
+
+    .side-search-container {
+        width: 100%;
+        height: 10%;
+    }
+
+    .profile-details-container {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .side-panel-container {
+        width: 100vw;
+        height: 100vh;
+    }
+}

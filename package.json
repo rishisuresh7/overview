@@ -23,6 +23,7 @@
     "@babel/preset-react": "^7.10.4",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
+    "chart.js": "^2.9.3",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^4.3.0",
