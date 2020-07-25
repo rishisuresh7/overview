@@ -1,20 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './right-panel.styles.scss';
 import Card from '../card/card.component.jsx';
 
-const RightPanel = () => {
+const RightPanel = ({repos}) => {
     return (
         <div className="cards-container">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+           {
+               repos.map((repo, index) => (
+                   <Card key={index} {...repo}/>
+               ))
+           }
         </div>
     )
 }
 
-export default RightPanel;
+const mapStateToProps = ({app: {repos}}) => ({
+    repos: repos,
+});
+
+export default connect(mapStateToProps)(RightPanel);

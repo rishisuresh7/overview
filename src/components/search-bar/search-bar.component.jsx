@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import {connect} from 'react-redux';
+import {searchUser} from '../../redux/global.actions.js';
 import './search-bar.styles.scss';
 
-const SearchBar = () => {
+const SearchBar = ({searchUser}) => {
 
+    const ref = useRef(null);
     const [value, setValue] = useState('');
     const handleChange = (event) => {
         setValue(event.target.value);
     }
 
-    const handleClick = () => {
-        setValue('');
-    }
-
     const search = () => {
+        searchUser(value);
         setValue('');
     }
 
@@ -27,7 +27,7 @@ const SearchBar = () => {
     }, [value]);
 
     const handleIcon = () => {
-        document.getElementById('cancel-button').classList.toggle('focus')
+        ref.current.classList.toggle('focus')
     }
 
     return (
@@ -43,10 +43,9 @@ const SearchBar = () => {
                         onChange = { handleChange }
                         value = { value }
                         autoComplete = 'off'
-                        autoFocus
                     >
                     </input>
-                <div className="cancel-button" id='cancel-button' onClick = {handleClick}>
+                <div className="cancel-button" id='cancel-button' ref={ref} onClick = {() => setValue('')}>
                     <i className="fa fa-trash"></i>
                 </div>
             </div>
@@ -54,4 +53,8 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar;
+const mapDispatchToProps = dispatch => ({
+    searchUser: id => dispatch(searchUser(id)),
+})
+
+export default connect(null, mapDispatchToProps)(SearchBar);

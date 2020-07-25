@@ -1,7 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './profile.styles.scss';
 
-const Profile = () => {
+const Profile = ({userName, userId, userImage, userLocation, numberOfRepositories, followers, following, joinedDate}) => {
     return (
         <div className="profile-container">
             <div className="profile-main">
@@ -9,35 +10,35 @@ const Profile = () => {
                     <div className="profile-image"
                     style = {
                         {
-                            backgroundImage: 'url(https://avatars2.githubusercontent.com/u/39532976?v=4)',
+                            backgroundImage: `url(${userImage})`,
                         }
                     }
                     ></div>
                 </div>
                 <div className="profile-details">
-                    <h2>Rishi Suresh</h2>
-                    <a href="https://github.com/rishisuresh7" target="_blank" >@rishisuresh7</a>
+                    <h2>{userName}</h2>
+                    <a href="https://github.com/rishisuresh7" target="_blank" >{`@${userId}`}</a>
                     <span>
                         <i className="fa fa-map-marker"></i>
-                        Bangalore
+                        {userLocation}
                     </span>
                     <span>
                         <i className="far fa-calendar-alt"></i>
-                        Joined 18th May 2018
+                        {`Joined ${joinedDate}`}
                     </span>
                 </div>
             </div>
             <div className="profile-meta">
                 <div className="meta-item">
-                    <span>3</span>
+                    <span>{numberOfRepositories}</span>
                     <span>Repositories</span>
                 </div>
                 <div className="meta-item">
-                    <span>5</span>
+                    <span>{followers}</span>
                     <span>Followers</span>
                 </div>
                 <div className="meta-item">
-                    <span>10</span>
+                    <span>{following}</span>
                     <span>Following</span>
                 </div>
             </div>
@@ -45,4 +46,15 @@ const Profile = () => {
     )
 }
 
-export default Profile;
+const mapStateToProps = ({app : { userData}}) => ({
+    userName: userData.userName,
+    userId: userData.userId,
+    userImage: userData.userImage,
+    userLocation: userData.location,
+    followers: userData.followers,
+    following: userData.following,
+    numberOfRepositories: userData.numberOfRepositories,
+    joinedDate: userData.joinedDate,
+});
+
+export default connect(mapStateToProps)(Profile);
