@@ -4,16 +4,13 @@ import {searchUser} from '../../redux/global.actions.js';
 import './search-bar.styles.scss';
 
 const SearchBar = ({searchUser}) => {
-    const containerRef = useRef(null);
     const ref = useRef(null);
     const [value, setValue] = useState('');
     const handleChange = (event) => {
-        containerRef.current.classList.remove('searched');
         setValue(event.target.value);
     }
 
     const search = () => {
-        containerRef.current.classList.add('searched');
         searchUser(value);
         setValue('');
     }
@@ -29,13 +26,12 @@ const SearchBar = ({searchUser}) => {
     }, [value]);
 
     const handleIcon = () => {
-        containerRef.current.classList.add('searched');
         ref.current.classList.toggle('focus')
     }
 
     return (
         <div className="search-container" >
-            <div className="search-bar" ref={containerRef} >
+            <div className="search-bar" >
                     <input
                         id = 'search'
                         name = 'search'

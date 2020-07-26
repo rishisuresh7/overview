@@ -7,20 +7,15 @@
     box-shadow: rgba(2,12,27,0.7) 5px 10px 30px -10px;
 
     .search-bar {
-        width: 40%;
+        width: 100%;
         height: 40px;
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-        &.searched {
-            width: 30%;
-        }
 
         input {
-            width: 100%;
+            width: 30%;
             height: 100%;
             border: 1px solid grey;
             outline: none;
@@ -31,6 +26,11 @@
             font-family: 'Open Sans';
             background-color: transparent;
             color: cyan;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            &:focus {
+                width: 40%;
+            }
         }
 
         ::placeholder {
@@ -48,8 +48,8 @@
         }
 
         .cancel-button {
-            position: absolute;
-            right: 10px;
+            position: relative;
+            right: 40px;
             height: 33px;
             width: 33px;
             border-radius: 25px;
