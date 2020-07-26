@@ -297,7 +297,7 @@ e.exports=function(e){"use strict";e=e&&e.hasOwnProperty("default")?e.default:e;
   \***************************************************************************************************/
 /*! no static exports found */
 /*! all exports used */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */function(e,t,n){(t=n(/*! ../node_modules/css-loader/dist/runtime/api.js */4)(!1)).push([e.i,'*{margin:0;padding:0;box-sizing:border-box}a{text-decoration:none;color:#000}.app{width:100vw;height:100vh;display:flex;flex-direction:column;background:#1a1e22;font-family:"Open Sans";overflow:hidden}.app .search-result{width:100%;display:flex;position:relative;top:0;height:calc(100% - 70px)}.app .search-result .right-panel-result{width:70vw;height:100%}',""]),e.exports=t},
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */function(e,t,n){(t=n(/*! ../node_modules/css-loader/dist/runtime/api.js */4)(!1)).push([e.i,'*{margin:0;padding:0;box-sizing:border-box}body{background:#1a1e22}a{text-decoration:none;color:#000}.app{width:100vw;height:100vh;display:flex;flex-direction:column;background:#1a1e22;font-family:"Open Sans";overflow:hidden}.app .search-result{width:100%;display:flex;position:relative;top:0;height:calc(100% - 70px)}.app .search-result .right-panel-result{width:70vw;height:100%}',""]),e.exports=t},
 /*!**********************************************************!*\
   !*** ./src/components/side-panel/side-panel.styles.scss ***!
   \**********************************************************/
