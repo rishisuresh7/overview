@@ -12,9 +12,6 @@ const WithLoaderChart = Loader(ReactChart);
 const SidePanel = ({isLoading, languages}) => {
     return(
         <div className="side-panel-container">
-            <div className="side-search-container">
-                <SearchBar/>
-            </div>
             <div className="profile-details-container">
                 <WithLoaderProfile  isLoading={isLoading}/>
             </div>

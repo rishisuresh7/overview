@@ -9,7 +9,7 @@ const filterData = (type, data) => {
             })
             return {
                 userId: data.login,
-                userName: data.name || 'Stranger',
+                userName: data.name || 'Stranger Alert!!',
                 userImage: data.avatar_url,
                 followers: data.followers,
                 following: data.following,

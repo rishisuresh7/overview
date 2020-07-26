@@ -13,5 +13,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    background: rgb(26, 30, 34);
     font-family: 'Open Sans';
 }

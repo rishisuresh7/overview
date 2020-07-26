@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './profile.styles.scss';
 
-const Profile = ({userName, userId, userImage, userLocation, numberOfRepositories, followers, following, joinedDate}) => {
+const Profile = ({userName, userId, userImage, userLocation, numberOfRepositories, followers, following, joinedDate, githubLink}) => {
     return (
         <div className="profile-container">
             <div className="profile-main">
@@ -17,7 +17,7 @@ const Profile = ({userName, userId, userImage, userLocation, numberOfRepositorie
                 </div>
                 <div className="profile-details">
                     <h2>{userName}</h2>
-                    <a href="https://github.com/rishisuresh7" target="_blank" >{`@${userId}`}</a>
+                    <a href= {githubLink} target="_blank" >{`@${userId}`}</a>
                     <span>
                         <i className="fa fa-map-marker"></i>
                         {userLocation}
@@ -55,6 +55,7 @@ const mapStateToProps = ({app : { userData}}) => ({
     following: userData.following,
     numberOfRepositories: userData.numberOfRepositories,
     joinedDate: userData.joinedDate,
+    githubLink: userData.githubLink,
 });
 
 export default connect(mapStateToProps)(Profile);
