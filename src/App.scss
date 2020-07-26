@@ -16,4 +16,13 @@
     flex-direction: column;
     background: rgb(26, 30, 34);
     font-family: 'Open Sans';
+    overflow: hidden;
+
+    .search-result {
+        width: 100%;
+        display: flex;
+        position: relative;
+        top: 0;
+        height: calc(100% - 70px);
+    }
 }

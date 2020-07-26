@@ -34,8 +34,8 @@ const SearchBar = ({searchUser}) => {
     }
 
     return (
-        <div className="search-container" ref={containerRef}>
-            <div className="search-bar">
+        <div className="search-container" >
+            <div className="search-bar" ref={containerRef} >
                     <input
                         id = 'search'
                         name = 'search'
