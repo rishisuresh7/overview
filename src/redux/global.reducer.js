@@ -3,6 +3,7 @@ import { SEARCH_USER_SUCCESS, SEARCH_USER_FAILURE, SEARCH_USER, GET_REPOS_SUCCES
 const initState = {
     userData: {},
     isSearchError: false,
+    firstHit: true,
     erorr: '',
     isLoading: true,
     repos: [],
@@ -15,6 +16,7 @@ const appReducer = (state = initState, action) => {
             return {
                 ...state,
                 isLoading: true,
+                firstHit: false,
             }
         case SEARCH_USER_SUCCESS:
             return {
