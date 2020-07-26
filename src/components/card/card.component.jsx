@@ -3,7 +3,7 @@ import ReactChart from '../chart/chart.component.jsx';
 import './card.styles.scss';
 import { getLanguages } from '../../resources/resource.js';
 
-const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl}) => {
+const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl, index}) => {
 
     const [languages, setLanguages] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +23,6 @@ const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl}) => 
         });
     }, [name]);
 
-    console.log(languages);
     return (
         <div className="card-container">
             <div className="card-header">
@@ -39,7 +38,7 @@ const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl}) => 
                 <p>{ description }</p>
             </div>
             <div className="card-chart">
-                <ReactChart languages = {languages} chartType = "doughnut"/>
+                <ReactChart languages = {languages} chartType = "doughnut" index = {index}/>
             </div>
             <div className="details">
                 <span><i className="far fa-star" aria-hidden="true"></i>{ stars }</span>

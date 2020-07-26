@@ -25,6 +25,7 @@
             display: inline-flex;
             justify-content: flex-start;
             align-items: center;
+            text-transform: uppercase;
  
             i {
                 font-size: 24px;
@@ -34,18 +35,18 @@
 
         a {
             margin-right: 5%;
-            color: white;
+            color: darkgrey;
             font-size: 22px;
         }
     }
- 
+
     .description {
-        height: 20%;
+        height: 22%;
         width: 100%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
+        font-size: 13px;
 
         p {
             padding: 0 10px 0 10%;
@@ -60,7 +61,7 @@
     .details {
         margin: 0 10%;
         width: 80%;
-        height: 10%;
+        height: 8%;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -68,15 +69,16 @@
         span {
             display: inline-flex;
             align-items: center;
-            color: azure;
+            color: darkgrey;
+            font-size: 13px;
         
             i {
                 padding-right: 5px;
-                font-size: 14px;
+                font-size: 13px;
 
                 &.small {
                     color: blue;
-                    font-size: 10px;
+                    font-size: 9px;
                 }
             }
         }

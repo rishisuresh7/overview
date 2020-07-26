@@ -37,7 +37,7 @@ const appReducer = (state = initState, action) => {
                 ...state,
                 isRepoError: false,
                 isRepoLoading: false,
-                repos: action.payload,
+                ...action.payload,
             }
         case GET_REPOS_FAILURE:
             return {

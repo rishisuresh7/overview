@@ -22,10 +22,11 @@ class ReactChart extends React.Component {
         this.myChart = new Chart(
             this.codeRef.current
             , {
-            type: 'doughnut',
+            type: this.props.chartType,
             data: {
                 labels: [],
                 datasets: [{
+                    label: 'No of Projects',
                     data: [],
                     backgroundColor: [],
                     borderColor: [],
@@ -33,6 +34,14 @@ class ReactChart extends React.Component {
                 }]
             },
             options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1,
+                        }
+                    }]
+                },
                 animation: {
                     duration: 2000,
                     easing: 'easeInCirc',
@@ -52,7 +61,7 @@ class ReactChart extends React.Component {
                         fontFamily: 'Open Sans',
                         usePointStyle: true,
                     },
-                    position: 'left',
+                    position: 'bottom',
                 },
                 tooltips: {
                     backgroundColor: 'slategrey',
@@ -67,7 +76,7 @@ class ReactChart extends React.Component {
         });
     }
 
-    componentWillReceiveProps({languages, chartType}) {
+    componentWillReceiveProps({languages, label, index}) {
         let labels = [], backgroundColor = [], borderColor = [], data = [];
         for(const [key, value] of Object.entries(languages)) {
             labels.push(key);
@@ -77,15 +86,19 @@ class ReactChart extends React.Component {
             borderColor.push('black');
         }
         const dataConfig = {
+            label,
             data,
             backgroundColor,
             borderColor,
             borderWidth: 1,
         }
-        this.myChart.type = chartType;
+        if(!label) {
+            delete(this.myChart.options.scales);
+        }
         this.myChart.data.labels = labels;
         this.myChart.data.datasets.pop();
         this.myChart.data.datasets.push(dataConfig);
+        this.myChart.options.legend.position = label ? 'bottom' : (index % 2 == 0 ? 'left' : 'right');
         this.myChart.options.animation.easing = 'easeInOutCirc';
         this.myChart.update();
     }

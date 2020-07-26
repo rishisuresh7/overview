@@ -6,24 +6,10 @@ import ReactChart from '../chart/chart.component.jsx';
 import SearchBar from '../search-bar/search-bar.component.jsx';
 import Loader from '../loader/loader.component.jsx';
 
-const CharPanel = () => {
-    return (
-        <React.Fragment>
-        <div className="profile-stats-heading">
-        <h2>Top Languages</h2>
-    </div>
-    <div className="profile-stats-chart">
-        <ReactChart chartType="bar"/>
-    </div>
-        </React.Fragment>
-    )
-}
-
 const WithLoaderProfile = Loader(Profile);
-const WithLoaderCharts = Loader(CharPanel);
+const WithLoaderChart = Loader(ReactChart);
 
-
-const SidePanel = ({isLoading}) => {
+const SidePanel = ({isLoading, languages}) => {
     return(
         <div className="side-panel-container">
             <div className="side-search-container">
@@ -33,7 +19,9 @@ const SidePanel = ({isLoading}) => {
                 <WithLoaderProfile  isLoading={isLoading}/>
             </div>
             <div className="profile-stats">
-                <WithLoaderCharts isLoading = {isLoading}/>
+                <div className="profile-stats-chart">
+                    <WithLoaderChart isLoading = {isLoading} chartType="bar" languages = {languages} label= "No of Projects"/>
+                </div>
             </div>
         </div>
     )
@@ -41,6 +29,7 @@ const SidePanel = ({isLoading}) => {
 
 const mapStateToProps = ({app}) => ({
     isLoading: app.isLoading,
+    languages: app.languages,
 });
 
 export default connect(mapStateToProps)(SidePanel);

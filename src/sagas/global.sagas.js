@@ -19,8 +19,11 @@ export function* searchUser(action) {
 export function* getRepos(action) {
     try {
         const response = yield call(resources.getRepos, action.payload)
-        const data = filterData('REPOS', response);
-        yield put(actions.getReposSuccess(data));
+        const {repos, languages} = filterData('REPOS', response);
+        yield put(actions.getReposSuccess({
+            repos,
+            languages
+        }));
     }
     catch (error) {
         yield put(actions.getReposFailure())
