@@ -70,10 +70,46 @@
     }
 }
 
+@media only screen and (max-width: 1400px) {
+    .search-container {
+        .search-bar {
+            input {
+                width: 35%;
+
+                &:focus {
+                    width: 55%;
+                }
+            }
+
+            .cancel-button {
+                width: 0;
+                right: 25px;
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .search-container {
         .search-bar {
             width: 80%;
+
+            input {
+                width: 75%;
+
+                &:focus {
+                    width: 100%;
+                }
+            }
+
+            .cancel-button {
+                width: 0;
+                right: 25px;
+            }
+
+            ::placeholder {
+                font-size: 11px;
+            }
         }
     }
 }

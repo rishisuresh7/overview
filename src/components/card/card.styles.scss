@@ -26,9 +26,15 @@
             justify-content: flex-start;
             align-items: center;
             text-transform: uppercase;
+
+            h4 {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
  
             i {
-                font-size: 24px;
+                font-size: 22px;
                 padding: 0 10px 0 5%;
             }
         }

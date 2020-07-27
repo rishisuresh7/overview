@@ -76,7 +76,7 @@ class ReactChart extends React.Component {
         });
     }
 
-    componentWillReceiveProps({languages, label, index}) {
+    componentWillReceiveProps({languages, label}) {
         let labels = [], backgroundColor = [], borderColor = [], data = [];
         for(const [key, value] of Object.entries(languages)) {
             labels.push(key);
@@ -98,7 +98,7 @@ class ReactChart extends React.Component {
         this.myChart.data.labels = labels;
         this.myChart.data.datasets.pop();
         this.myChart.data.datasets.push(dataConfig);
-        this.myChart.options.legend.position = label ? 'bottom' : (index % 2 == 0 ? 'left' : 'right');
+        this.myChart.options.legend.position = label ? 'bottom' : 'left';
         this.myChart.options.animation.easing = 'easeInOutCirc';
         this.myChart.update();
     }

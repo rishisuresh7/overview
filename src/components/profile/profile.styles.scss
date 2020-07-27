@@ -36,7 +36,8 @@
             flex-direction: column;
 
             h2 {
-                color: rgb(246, 248, 250);;
+                color: rgb(246, 248, 250);
+                text-transform: capitalize;
             }
 
             a {
@@ -78,6 +79,21 @@
 
             :nth-child(1) {
                 color: white;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .profile-container {
+        .profile-main {
+            padding: 5px;
+
+            .profile-image-container {
+                .profile-image {
+                    height: 150px;
+                    width: 150px;
+                }
             }
         }
     }

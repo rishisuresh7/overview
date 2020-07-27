@@ -22,6 +22,12 @@
     }
 }
 
+@media only screen and (max-width: 1500px) {
+    .side-panel-container {
+        width: 50vw;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .side-panel-container {
         width: 100vw;

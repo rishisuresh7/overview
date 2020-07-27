@@ -8,7 +8,7 @@ const RightPanel = ({repos}) => {
         <div className="cards-container">
            {
                repos.map((repo, index) => (
-                   <Card key={index} {...repo} index = {index}/>
+                   <Card key={index} {...repo}/>
                ))
            }
         </div>
