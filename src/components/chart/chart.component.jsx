@@ -39,12 +39,21 @@ class ReactChart extends React.Component {
                         ticks: {
                             beginAtZero: true,
                             stepSize: 1,
+                        },
+                        gridLines: {
+                            color: 'darkcyan',
+                        },
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: 'darkcyan',
+                            drawOnChartArea: false,
                         }
                     }]
                 },
                 animation: {
-                    duration: 2000,
-                    easing: 'easeInCirc',
+                    duration: 1500,
+                    animateScale: true,
                 },
                 layout: {
                     padding: {
@@ -64,13 +73,13 @@ class ReactChart extends React.Component {
                     position: 'bottom',
                 },
                 tooltips: {
-                    backgroundColor: 'slategrey',
+                    backgroundColor: '#24292e',
                     titleFontFamily: 'Open Sans',
                     bodyFontColor: 'cyan',
                     borderColor: 'white',
                     footerFontColor: 'black',
                     displayColors: true,
-                    titleFontColor: 'black',
+                    titleFontColor: 'azure',
                 }
             }
         });
@@ -88,7 +97,7 @@ class ReactChart extends React.Component {
             labels.push(key);
             data.push((value*100/sum).toFixed(2));
             backgroundColor.push(this.getRandomColor());
-            borderColor.push('black');
+            !label ? borderColor.push('#1a1e22') : borderColor.push('black');
         }
         const dataConfig = {
             label,
