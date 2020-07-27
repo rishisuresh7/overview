@@ -6,7 +6,6 @@ import { getLanguages } from '../../resources/resource.js';
 const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl}) => {
 
     const [languages, setLanguages] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -15,11 +14,9 @@ const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl}) => 
         .then(res => {
             setLanguages(res);
             setIsError(false);
-            setIsLoading(false);
         })
         .catch(error => {
             setIsError(true);
-            setIsLoading(false);
         });
     }, [name]);
 
@@ -38,7 +35,13 @@ const Card = ({name, gitUrl, description, size, stars, forks, languagesUrl}) => 
                 <p>{ description }</p>
             </div>
             <div className="card-chart">
-                <ReactChart languages = {languages} chartType = "doughnut"/>
+                {
+                    isError ?
+                    <div className="error-message">
+                        <p>Could not load chart!</p>
+                    </div> :
+                    <ReactChart languages = {languages} chartType = "doughnut"/>
+                }
             </div>
             <div className="details">
                 <span><i className="far fa-star" aria-hidden="true"></i>{ stars }</span>

@@ -78,11 +78,16 @@ class ReactChart extends React.Component {
 
     componentWillReceiveProps({languages, label}) {
         let labels = [], backgroundColor = [], borderColor = [], data = [];
+        let sum = 100;
+
+        if(!label) {
+            delete(this.myChart.options.scales);
+            sum = Object.values(languages).reduce((initial, item) => item + initial, 0);
+        }
         for(const [key, value] of Object.entries(languages)) {
             labels.push(key);
-            data.push(value);
-            const color = this.getRandomColor();
-            backgroundColor.push(color);
+            data.push((value*100/sum).toFixed(2));
+            backgroundColor.push(this.getRandomColor());
             borderColor.push('black');
         }
         const dataConfig = {
@@ -91,9 +96,6 @@ class ReactChart extends React.Component {
             backgroundColor,
             borderColor,
             borderWidth: 1,
-        }
-        if(!label) {
-            delete(this.myChart.options.scales);
         }
         this.myChart.data.labels = labels;
         this.myChart.data.datasets.pop();
