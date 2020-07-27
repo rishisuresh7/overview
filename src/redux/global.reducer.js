@@ -2,9 +2,8 @@ import { SEARCH_USER_SUCCESS, SEARCH_USER_FAILURE, SEARCH_USER, GET_REPOS_SUCCES
 
 const initState = {
     userData: {},
-    isSearchError: false,
+    isError: false,
     firstHit: true,
-    erorr: '',
     isLoading: true,
     repos: [],
     isRepoLoading: true,
@@ -22,16 +21,14 @@ const appReducer = (state = initState, action) => {
             return {
                 ...state,
                 userData: action.payload,
-                isSearchError: false,
-                erorr: '',
+                isError: false,
                 isLoading: false,
             }
         case SEARCH_USER_FAILURE:
             return {
                 ...state,
                 userData: {},
-                isSearchError: true,
-                error: action.payload,
+                isError: true,
                 isLoading: false,
             }
         case GET_REPOS_SUCCESS:
@@ -40,13 +37,15 @@ const appReducer = (state = initState, action) => {
                 isRepoError: false,
                 isRepoLoading: false,
                 ...action.payload,
+                isError: false,
             }
         case GET_REPOS_FAILURE:
             return {
                 ...state,
                 isRepoError: true,
                 isRepoLoading:false,
-                repos: []
+                repos: [],
+                isError: true,
             }
         default:
             return state

@@ -1,0 +1,42 @@
+.error-container {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    opacity: 0.75;
+    transform: translate(-50%, -50%);
+
+    .error-image-container {
+        position: relative;
+        top: 0px;
+        width: 175px;
+        height: 50%;
+        background-position: center;
+        background-size: cover;
+        animation: error-bounce 0.5s ease-out infinite alternate;
+    }
+
+    @keyframes error-bounce {
+        100% {
+            top: -50px;
+        }
+    }
+
+    .error-message-container {
+        text-align: center;
+        color: darkcyan;
+
+        h1 {
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #444d54;
+            font-size: 22px;  
+        }
+    }
+}
