@@ -29,6 +29,19 @@ module.exports = {
                 {
                     from: './src/assets',
                     to: './assets',
+                    globOptions: {
+                        ignore: [
+                            '**/.DS_Store',
+                        ]
+                    },
+                },
+                {
+                    from: './src/favicon.ico',
+                    to: './favicon.ico',
+                },
+                {
+                    from: './src/manifest.json',
+                    to: './manifest.json',
                 },
             ]
         }),

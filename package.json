@@ -41,6 +41,7 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.10.5",
     "copy-webpack-plugin": "^6.0.3",
-    "sass": "^1.26.10"
+    "sass": "^1.26.10",
+    "workbox-webpack-plugin": "^5.1.3"
   }
 }
