@@ -9,13 +9,18 @@ class ReactChart extends React.Component {
         this.myChart = null;
     }
 
-    getRandomColor = () => {
-        var letters = 'BCDEF'.split('');
-        var color = '#33';
-        for (var i = 0; i < 4; i++ ) {
-            color += letters[Math.floor(Math.random() * letters.length)];
-        }
-        return color;
+    getRandomColor = (opacity = 1) => {
+        const o = Math.round, r = Math.random, s = 80;
+        return `rgba(${o(r()*s + 175)}, ${o(r()*s + 175)}, ${o(r()*s + 175)}, ${opacity})`;
+    }
+
+    getRandomAnimation = () => {
+        const animations = [
+        'linear', 'easeInQuad', 'easeOutQuad', 'easeInOutQuad', 'easeInCubic', 'easeOutCubic', 'easeInOutCubic', 'easeInQuart',  'easeOutQuart',
+        'easeInOutQuart', 'easeInQuint', 'easeOutQuint', 'easeInOutQuint', 'easeInSine', 'easeOutSine', 'easeInOutSine', 'easeInExpo', 
+        'easeOutExpo', 'easeInOutExpo', 'easeInCirc', 'easeOutCirc', 'easeInOutCirc', 'easeInBounce', 'easeOutBounce', 'easeInOutBounce'];
+
+        return animations[Math.floor(Math.random() * animations.length)];
     }
 
     componentDidMount() {
@@ -68,7 +73,7 @@ class ReactChart extends React.Component {
                     labels: {
                         fontColor: 'rgb(124, 125, 125)',
                         fontFamily: 'Open Sans',
-                        usePointStyle: true,
+                        usePointStyle: false,
                     },
                     position: 'bottom',
                 },
@@ -76,6 +81,7 @@ class ReactChart extends React.Component {
                     backgroundColor: '#24292e',
                     titleFontFamily: 'Open Sans',
                     bodyFontColor: 'cyan',
+                    bodyFontFamily: 'Open Sans',
                     borderColor: 'white',
                     footerFontColor: 'black',
                     displayColors: true,
@@ -91,12 +97,13 @@ class ReactChart extends React.Component {
 
         if(!label) {
             delete(this.myChart.options.scales);
+            this.myChart.options.legend.labels.usePointStyle = true;
             sum = Object.values(languages).reduce((initial, item) => item + initial, 0);
         }
         for(const [key, value] of Object.entries(languages)) {
             labels.push(key);
             data.push((value*100/sum).toFixed(2));
-            backgroundColor.push(this.getRandomColor());
+            backgroundColor.push(this.getRandomColor(label ? 0.6 : 0.85));
             !label ? borderColor.push('#1a1e22') : borderColor.push('black');
         }
         const dataConfig = {
@@ -110,7 +117,7 @@ class ReactChart extends React.Component {
         this.myChart.data.datasets.pop();
         this.myChart.data.datasets.push(dataConfig);
         this.myChart.options.legend.position = label ? 'bottom' : 'left';
-        this.myChart.options.animation.easing = 'easeInOutCirc';
+        this.myChart.options.animation.easing = this.getRandomAnimation();
         this.myChart.update();
     }
 
